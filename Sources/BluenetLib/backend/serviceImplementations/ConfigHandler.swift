@@ -77,7 +77,7 @@ public class ConfigHandler {
         return self._writeToConfig(packet: data.getPacket())
     }
     
-    public func getCurrentConsumptionThreshold(_ scanSendDelay: NSNumber) -> Promise<UInt16> {
+    public func getCurrentConsumptionThreshold() -> Promise<UInt16> {
         return self._getConfig(ConfigurationType.CURRENT_CONSUMPTION_THRESHOLD)
     }
     
