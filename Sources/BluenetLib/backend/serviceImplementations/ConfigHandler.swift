@@ -72,6 +72,15 @@ public class ConfigHandler {
         return self._writeToConfig(packet: data.getPacket())
     }
     
+    public func setCurrentConsumptionThreshold(_ threshold_mA: NSNumber) -> Promise<Void> {
+        let data = StatePacketsGenerator.getWritePacket(type: ConfigurationType.CURRENT_CONSUMPTION_THRESHOLD).load(threshold_mA.uint16Value)
+        return self._writeToConfig(packet: data.getPacket())
+    }
+    
+    public func getCurrentConsumptionThreshold(_ scanSendDelay: NSNumber) -> Promise<UInt16> {
+        return self._getConfig(ConfigurationType.CURRENT_CONSUMPTION_THRESHOLD)
+    }
+    
     public func setScanBreakDuration(_ scanBreakDuration: NSNumber) -> Promise<Void> {
         let data = StatePacketsGenerator.getWritePacket(type: ConfigurationType.scan_BREAK_DURATION).load(scanBreakDuration.uint16Value)
         return self._writeToConfig(packet: data.getPacket())
